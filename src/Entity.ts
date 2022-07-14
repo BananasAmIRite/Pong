@@ -42,13 +42,6 @@ export default abstract class Entity {
   }
 
   public setPosition(x: number, y: number) {
-    // console.log(x);
-    // console.log(y);
-    // console.log(x + this.w);
-    // console.log(this.getGame().getWidth());
-    // console.log(y + this.h);
-    // console.log(this.getGame().getHeight());
-
     this.posX = x;
     this.posY = y;
   }
@@ -64,16 +57,9 @@ export default abstract class Entity {
   }
 
   render(e: CanvasRenderingContext2D): void {
-    if (this instanceof Paddle) console.log(`on paddle: ${this.x}`);
-    if (this instanceof Ball) console.log(`on ball: ${this.x}`);
-
     this.controller?.control();
     for (const entity of this.game.getEntities()) {
       if (entity === this) continue;
-      // console.log(this);
-      // console.log(this.isCollidingWith(entity));
-      // console.log(entity);
-      // console.log(entity.isCollidingWith(this));s
 
       if (this.isCollidingWith(entity) && entity.isCollidingWith(this)) this.controller?.onCollide(entity);
     }
@@ -84,9 +70,6 @@ export default abstract class Entity {
   }
 
   isCollidingWith(entity: Entity): boolean {
-    // if (this instanceof Paddle && entity instanceof Ball) {
-    //   console.log(`checking collision from paddle, ${this.x}: ${Entity.isColliding(this, entity)}`);
-    // }
     return Entity.isColliding(this, entity);
   }
 

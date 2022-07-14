@@ -24,7 +24,6 @@ export default class PongKeyListener {
   }
 
   public onRender() {
-    console.log(this.keys);
     this.keys.forEach((e) => {
       switch (e) {
         case 'w':

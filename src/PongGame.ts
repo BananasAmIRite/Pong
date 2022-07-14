@@ -77,8 +77,6 @@ export default class PongGame {
     this.deltaT = (Date.now() - this.lastRender) / 5;
     this.lastRender = Date.now();
 
-    console.log('render loop start');
-
     for (let entity of this.entities) {
       entity.render(ctx);
     }

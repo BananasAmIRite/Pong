@@ -70,12 +70,6 @@ export default class Ball extends Entity {
     const Dx = Xn - Xc;
     const Dy = Yn - Yc;
 
-    if (entity instanceof Paddle) {
-      console.log(`checking collision for paddle, ${entity.x}: ${Dx * Dx + Dy * Dy <= R * R}`);
-
-      // console.log(X1, Y1);
-      // console.log(X2, Y2);
-    }
     return Dx * Dx + Dy * Dy <= R * R;
   }
 }

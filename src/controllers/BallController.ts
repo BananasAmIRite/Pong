@@ -31,15 +31,6 @@ export default class BallController extends EntityController<Ball> {
   // mathway this:
   // x^2+m^2x^2+2mxb+b^2=s^2
   control(): void {
-    // console.log(
-    //   'a: ',
-    //   this.entity.x,
-    //   this.entity.w,
-    //   this.entity.getGame().getWidth(),
-    //   this.entity.x + this.entity.w > this.entity.getGame().getWidth()
-    // );
-    console.log('velo, dir: ', this.velocity, this.direction);
-
     if (this.entity.x < 0) {
       // left side
       this.entity.getGame().addScore(PaddleType.RIGHT);
@@ -48,9 +39,6 @@ export default class BallController extends EntityController<Ball> {
       this.entity.getGame().addScore(PaddleType.LEFT);
     } else if (this.entity.y < 0 || this.entity.y + this.entity.h > this.entity.getGame().getHeight()) {
       // tops
-
-      console.log('tops and bottoms collision');
-      // throw new Error('top and bottom');
 
       const yComp = Math.sin(this.direction);
       const xComp = Math.cos(this.direction);
@@ -68,8 +56,6 @@ export default class BallController extends EntityController<Ball> {
   }
 
   onCollide(entity: Entity): void {
-    console.log('collision');
-
     if (!(entity instanceof Paddle)) return;
     // throw new Error('paddle collision !');
 
@@ -80,8 +66,6 @@ export default class BallController extends EntityController<Ball> {
 
     const newYComp = yComp;
     const newXComp = -xComp;
-
-    console.log(`Changing: ${yComp} -> ${newYComp}, ${xComp} -> ${newXComp}`);
 
     this.direction = Math.atan2(newYComp, newXComp);
   }
